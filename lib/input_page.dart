@@ -2,11 +2,7 @@ import 'package:bmi_calculator/icon_content.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-const bottomContainerHeight = 80.0;
-const bottomContainerColor = Color(0xFFEB1555);
-const activeCardColor = Color(0xFF1D1E33);
-const inactiveCardColor = Color(0xFF111328);
+import 'package:bmi_calculator/constants.dart';
 
 enum GenderType { male, female }
 
@@ -16,20 +12,9 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color maleCardColor = inactiveCardColor;
-  Color femaleCardColor = inactiveCardColor;
+  Color maleCardColor = kInactiveCardColor;
+  Color femaleCardColor = kInactiveCardColor;
   GenderType selectedGender;
-
-////  1 - male, 2 - female
-//  void updateCardColor(GenderType gender) {
-//    if (gender == GenderType.male) {
-//      maleCardColor = activeCardColor;
-//      femaleCardColor = inactiveCardColor;
-//    } else {
-//      femaleCardColor = activeCardColor;
-//      maleCardColor = inactiveCardColor;
-//    }
-//  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +34,10 @@ class _InputPageState extends State<InputPage> {
                         selectedGender = GenderType.male;
                       });
                     },
-                    colour: selectedGender == GenderType.male? activeCardColor : inactiveCardColor,
-                    cardChild:
-                        CustomIconContent(FontAwesomeIcons.mars, 'MALE'),
+                    colour: selectedGender == GenderType.male
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
+                    cardChild: CustomIconContent(FontAwesomeIcons.mars, 'MALE'),
                   ),
                 ),
                 Expanded(
@@ -61,7 +47,9 @@ class _InputPageState extends State<InputPage> {
                         selectedGender = GenderType.female;
                       });
                     },
-                    colour: selectedGender == GenderType.female ? activeCardColor : inactiveCardColor,
+                    colour: selectedGender == GenderType.female
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
                     cardChild:
                         CustomIconContent(FontAwesomeIcons.venus, 'FEMALE'),
                   ),
@@ -74,9 +62,11 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    colour: activeCardColor,
+                    colour: kActiveCardColor,
                     cardChild: Column(
-                      children: <Widget>[Text('HEIGHT')],
+                      children: <Widget>[
+                        Text('HEIGHT', style: kBuildTextStyle),
+                      ],
                     ),
                   ),
                 ),
@@ -88,22 +78,22 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    colour: activeCardColor,
+                    colour: kActiveCardColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: activeCardColor,
+                    colour: kActiveCardColor,
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            color: bottomContainerColor,
+            color: kBottomContainerColor,
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
           ),
         ],
       ),
