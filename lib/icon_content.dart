@@ -22,7 +22,7 @@ class CustomIconContent extends StatelessWidget {
         ),
         Text(
           _customText,
-          style: kBuildTextStyle,
+          style: kLabelTextStyle,
         ),
       ],
     );
